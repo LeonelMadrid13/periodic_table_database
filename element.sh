@@ -20,3 +20,8 @@ then
  echo -e "I could not find that element in the database."
  exit
 fi
+
+echo $element | while IFS=" |" read atomicNumber name symbol type mass meltingPoint boilingPoint
+do
+  echo -e "The element with atomic number $atomicNumber is $name ($symbol). It's a $type, with a mass of $mass amu. $name has a melting point of $meltingPoint celsius and a boiling point of $boilingPoint celsius."
+done
