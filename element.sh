@@ -14,3 +14,9 @@ then
 else
   element=$($PSQL "SELECT atomic_number, name, symbol, type, atomic_mass, melting_point_celsius, boiling_point_celsius FROM elements JOIN properties using(atomic_number) JOIN types USING(type_id) WHERE name = '$1' or symbol = '$1'")
 fi
+
+if [[ -z $element ]]
+then
+ echo -e "I could not find that element in the database."
+ exit
+fi
